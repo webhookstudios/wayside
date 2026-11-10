@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Staple
+GenericName=Desktop Shortcuts
+Comment=Settings for the Create Desktop Shortcut right-click option
+Exec=@EXEC@
+Icon=@ICON@
+Terminal=false
+StartupNotify=false
+Categories=Settings;GNOME;GTK;
+Keywords=shortcut;desktop;link;launcher;right-click;extension;

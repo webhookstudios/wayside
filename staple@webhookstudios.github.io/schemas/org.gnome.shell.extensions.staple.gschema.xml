@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.staple"
+          path="/org/gnome/shell/extensions/staple/">
+    <key name="show-in-dock" type="b">
+      <default>true</default>
+      <summary>Add Create Desktop Shortcut to the dock's right-click menu</summary>
+    </key>
+    <key name="show-in-app-menus" type="b">
+      <default>true</default>
+      <summary>Add Create Desktop Shortcut to the right-click menu of apps in the app grid and Activities</summary>
+    </key>
+    <key name="notify" type="b">
+      <default>true</default>
+      <summary>Show a message after a shortcut is created</summary>
+    </key>
+  </schema>
+</schemalist>

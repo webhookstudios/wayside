@@ -1,0 +1,9 @@
+{
+  "uuid": "staple@webhookstudios.github.io",
+  "name": "Staple",
+  "description": "Right-click an app, folder or file and choose Create Desktop Shortcut. The shortcut appears on your desktop and can be moved around.",
+  "version-name": "1.0.0",
+  "shell-version": ["50"],
+  "settings-schema": "org.gnome.shell.extensions.staple",
+  "url": "https://github.com/webhookstudios/staple"
+}
