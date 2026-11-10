@@ -15,6 +15,12 @@ Apps get a copy of their launcher on your desktop, marked as trusted so a double
 
 Shortcuts are ordinary desktop icons. Move, rename or delete them like any other.
 
+### Dragging a shortcut into a folder
+
+An app shortcut keeps working and keeps its icon when you move it into a folder. The Files app normally shows a plain gear for launcher files inside folders, so Staple also gives each shortcut its app's icon as a custom icon, which travels with the file. Shortcuts are named after the app, such as `Files.desktop`.
+
+If you move one to a different drive, the launch permission can be lost. Right-click the shortcut and choose **Allow Launching** to turn it back on.
+
 ## Requirements
 
 - GNOME Shell 50 (Ubuntu 26.04), on Wayland
@@ -27,10 +33,10 @@ Staple has only been tested on Ubuntu 26.04 with GNOME Shell 50.1.
 
 ### With the deb package (recommended)
 
-Download `staple_1.0.1_all.deb` from the [latest release](https://github.com/webhookstudios/staple/releases/latest), then install it:
+Download `staple_1.1.0_all.deb` from the [latest release](https://github.com/webhookstudios/staple/releases/latest), then install it:
 
 ```bash
-sudo apt install ./staple_1.0.1_all.deb
+sudo apt install ./staple_1.1.0_all.deb
 ```
 
 Log out and back in, then open **Staple** from the apps menu to turn it on. To remove it:
