@@ -14,7 +14,13 @@ import subprocess
 
 import gi
 
-gi.require_version('Nautilus', '4.0')
+# Ubuntu 26.04 ships the bindings as Nautilus 4.1; older releases call it 4.0.
+for _version in ('4.1', '4.0'):
+    try:
+        gi.require_version('Nautilus', _version)
+        break
+    except ValueError:
+        continue
 from gi.repository import GLib, GObject, Nautilus  # noqa: E402
 
 
