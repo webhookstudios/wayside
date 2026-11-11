@@ -1,5 +1,5 @@
 #!/bin/sh
-# Installs Staple for the current user, without root: the shell extension for
+# Installs Wayside for the current user, without root: the shell extension for
 # app icons, the Files right-click option (needs python3-nautilus), and an
 # apps-menu entry that opens the settings.
 set -e
@@ -30,10 +30,10 @@ sed -e "s|@EXEC@|gjs -m \"$DATA/staple/launcher.js\"|" -e "s|@ICON@|$ICON|" \
 update-desktop-database "$DATA/applications" 2>/dev/null || true
 
 cat <<EOM
-Staple is installed in:
+Wayside is installed in:
   $DEST
 
-Log out and back in, then open Staple from the apps menu.
+Log out and back in, then open Wayside from the apps menu.
 Right-clicking folders and files in Files also needs the python3-nautilus
 package ("sudo apt install python3-nautilus"), then "nautilus -q".
 EOM

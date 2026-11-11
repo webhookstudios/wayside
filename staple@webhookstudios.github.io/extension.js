@@ -141,7 +141,7 @@ export default class StapleExtension extends Extension {
         const messages = {
             created: [`${result.name} is on your desktop`, 'You can drag it wherever you like.'],
             exists: ['Already on your desktop', `${result.name} already has a shortcut there.`],
-            error: ['Staple could not make a shortcut', result.message],
+            error: ['Wayside could not make a shortcut', result.message],
         };
         const [title, body] = messages[result.status];
         Main.notify(title, body);

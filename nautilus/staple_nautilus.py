@@ -149,7 +149,7 @@ def create_shortcut(source):
 
 def notify(title, body):
     try:
-        subprocess.run(['notify-send', '--icon=emblem-symbolic-link', '--app-name=Staple', title, body],
+        subprocess.run(['notify-send', '--icon=emblem-symbolic-link', '--app-name=Wayside', title, body],
                        check=False, capture_output=True)
     except OSError:
         pass
@@ -201,4 +201,4 @@ class StapleExtension(GObject.GObject, Nautilus.MenuProvider):
         elif existing:
             notify('Already on your desktop', ', '.join(existing) + ' already has a shortcut there.')
         if errors:
-            notify('Staple could not make a shortcut', ', '.join(errors))
+            notify('Wayside could not make a shortcut', ', '.join(errors))

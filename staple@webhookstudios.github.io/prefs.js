@@ -2,6 +2,7 @@ import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 
 import {ExtensionPreferences} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import {applyToWindow as applySedge} from './sedge/sedge.js';
 
 function switchRow(settings, key, title, subtitle) {
     const row = new Adw.SwitchRow({title, subtitle});
@@ -11,6 +12,8 @@ function switchRow(settings, key, title, subtitle) {
 
 export default class StaplePreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
+        applySedge(window, `${this.path}/sedge`);
+        window.set_title('Wayside');
         const settings = this.getSettings();
         const page = new Adw.PreferencesPage();
         window.add(page);
