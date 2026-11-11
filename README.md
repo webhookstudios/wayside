@@ -35,28 +35,28 @@ Wayside has only been tested on Ubuntu 26.04 with GNOME Shell 50.1.
 
 ### With the deb package (recommended)
 
-Download `staple_1.2.0_all.deb` from the [latest release](https://github.com/webhookstudios/staple/releases/latest), then install it:
+Download `wayside_1.2.0_all.deb` from the [latest release](https://github.com/webhookstudios/wayside/releases/latest), then install it:
 
 ```bash
-sudo apt install ./staple_1.2.0_all.deb
+sudo apt install ./wayside_1.2.0_all.deb
 ```
 
 Log out and back in, then open **Wayside** from the apps menu to turn it on. To remove it:
 
 ```bash
-sudo apt remove staple
+sudo apt remove wayside
 ```
 
-You can also install and update it from [Grove](https://github.com/webhookstudios/spool).
+You can also install and update it from [Grove](https://github.com/webhookstudios/grove).
 
 ### From source
 
 ```bash
-git clone https://github.com/webhookstudios/staple.git
+git clone https://github.com/webhookstudios/wayside.git
 ```
 
 ```bash
-./staple/install.sh
+./wayside/install.sh
 ```
 
 This installs for your user only. For the Files right-click, also run `sudo apt install python3-nautilus`, then `nautilus -q` once.
@@ -66,7 +66,7 @@ This installs for your user only. For the Files right-click, also run `sudo apt 
 Open **Wayside** from the apps menu, or run:
 
 ```bash
-gnome-extensions prefs staple@webhookstudios.github.io
+gnome-extensions prefs wayside@webhookstudios.github.io
 ```
 
 | Setting | Default | What it does |
@@ -90,16 +90,16 @@ For the shell, Wayside adds one menu item to GNOME's app menu class (used by the
 | `extension.js` | Adds the menu items to the shell and dock menus |
 | `shortcut.js` | Creates an app shortcut |
 | `prefs.js` | The settings window |
-| `nautilus/staple_nautilus.py` | The Files right-click for folders and files |
+| `nautilus/wayside_nautilus.py` | The Files right-click for folders and files |
 
 ## Development
 
 ```bash
-ln -s "$PWD/staple@webhookstudios.github.io" ~/.local/share/gnome-shell/extensions/
+ln -s "$PWD/wayside@webhookstudios.github.io" ~/.local/share/gnome-shell/extensions/
 ```
 
 ```bash
-glib-compile-schemas staple@webhookstudios.github.io/schemas
+glib-compile-schemas wayside@webhookstudios.github.io/schemas
 ```
 
 A Wayland session cannot reload extension code, so each change needs a logout. Build the release files into `dist/` with `./pack.sh` (extension zip) and `./build-deb.sh` (deb package, needs only `dpkg-deb`).

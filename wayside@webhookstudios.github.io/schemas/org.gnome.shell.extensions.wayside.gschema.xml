@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.shell.extensions.staple"
+  <schema id="org.gnome.shell.extensions.wayside"
           path="/org/gnome/shell/extensions/staple/">
     <key name="show-in-dock" type="b">
       <default>true</default>

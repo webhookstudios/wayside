@@ -51,7 +51,7 @@ export function createAppShortcut(app) {
             // The desktop only launches launchers it has been told to trust.
             destination.set_attribute_string('metadata::trusted', 'true', Gio.FileQueryInfoFlags.NONE, null);
         } catch (e) {
-            console.warn(`Staple: could not mark the shortcut as trusted: ${e.message}`);
+            console.warn(`Wayside: could not mark the shortcut as trusted: ${e.message}`);
         }
         try {
             const iconFile = findIconFile(info.get_string('Icon'));
@@ -60,7 +60,7 @@ export function createAppShortcut(app) {
                     Gio.FileQueryInfoFlags.NONE, null);
             }
         } catch (e) {
-            console.warn(`Staple: could not set the shortcut's icon: ${e.message}`);
+            console.warn(`Wayside: could not set the shortcut's icon: ${e.message}`);
         }
         return {status: 'created', name, path: destination.get_path()};
     } catch (e) {

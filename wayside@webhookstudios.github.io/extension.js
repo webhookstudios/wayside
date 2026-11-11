@@ -8,7 +8,7 @@ import {createAppShortcut} from './shortcut.js';
 
 const LABEL = 'Create Desktop Shortcut';
 
-// Docks that build their own right-click menu. Staple adds its item to each
+// Docks that build their own right-click menu. Wayside adds its item to each
 // one that is installed.
 const DOCKS = ['ubuntu-dock@ubuntu.com', 'dash-to-dock@micxgx.gmail.com'];
 
@@ -20,19 +20,19 @@ function launcherFile(app) {
     }
 }
 
-export default class StapleExtension extends Extension {
+export default class WaysideExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         this._injection = new InjectionManager();
         this._menus = new Set();
         this._active = true;
 
-        const staple = this;
+        const wayside = this;
         // The app grid and the Activities dash share this menu class. The menu
         // is told which app it is for by setApp(), so the item is added there.
         this._injection.overrideMethod(AppMenu.prototype, 'setApp', original => function (app) {
             original.call(this, app);
-            staple._decorateShellMenu(this, app);
+            wayside._decorateShellMenu(this, app);
         });
 
         this._hookDocks();
@@ -43,11 +43,11 @@ export default class StapleExtension extends Extension {
         this._injection?.clear();
         this._injection = null;
         for (const menu of this._menus) {
-            menu._stapleItem?.destroy();
-            menu._stapleItem = null;
-            if (menu._stapleRebuild) {
+            menu._waysideItem?.destroy();
+            menu._waysideItem = null;
+            if (menu._waysideRebuild) {
                 delete menu._rebuildMenu;   // falls back to the class's own method
-                menu._stapleRebuild = null;
+                menu._waysideRebuild = null;
             }
         }
         this._menus = null;
@@ -57,18 +57,18 @@ export default class StapleExtension extends Extension {
     // ---- the shell's own app menu --------------------------------------
 
     _decorateShellMenu(menu, app) {
-        menu._stapleApp = app;
-        if (!menu._stapleItem) {
+        menu._waysideApp = app;
+        if (!menu._waysideItem) {
             const item = new PopupMenu.PopupMenuItem(LABEL);
-            item.connect('activate', () => this._create(menu._stapleApp));
+            item.connect('activate', () => this._create(menu._waysideApp));
             const items = menu._getMenuItems();
             const after = items.indexOf(menu._toggleFavoriteItem);
             menu.addMenuItem(item, after >= 0 ? after + 1 : items.length);
-            menu._stapleItem = item;
+            menu._waysideItem = item;
             this._menus.add(menu);
             menu.connect('destroy', () => this._menus?.delete(menu));
         }
-        menu._stapleItem.visible = this._settings.get_boolean('show-in-app-menus') && !!launcherFile(app);
+        menu._waysideItem.visible = this._settings.get_boolean('show-in-app-menus') && !!launcherFile(app);
     }
 
     // ---- docks ----------------------------------------------------------
@@ -85,14 +85,14 @@ export default class StapleExtension extends Extension {
                 const proto = module.DockAbstractAppIcon?.prototype;
                 if (!proto?.popupMenu)
                     continue;
-                const staple = this;
+                const wayside = this;
                 this._injection.overrideMethod(proto, 'popupMenu', original => function (...args) {
                     const result = original.apply(this, args);
-                    staple._decorateDockMenu(this._menu, this);
+                    wayside._decorateDockMenu(this._menu, this);
                     return result;
                 });
             } catch (e) {
-                console.warn(`Staple: could not add to the menu of ${uuid}: ${e.message}`);
+                console.warn(`Wayside: could not add to the menu of ${uuid}: ${e.message}`);
             }
         }
     }
@@ -100,15 +100,15 @@ export default class StapleExtension extends Extension {
     _decorateDockMenu(menu, icon) {
         if (!menu || !this._active)
             return;
-        menu._stapleApp = icon.app;
-        if (!menu._stapleRebuild) {
+        menu._waysideApp = icon.app;
+        if (!menu._waysideRebuild) {
             // The dock throws its menu away and rebuilds it every time it opens.
             const rebuild = menu._rebuildMenu.bind(menu);
             menu._rebuildMenu = () => {
                 rebuild();
                 this._addDockItem(menu);
             };
-            menu._stapleRebuild = true;
+            menu._waysideRebuild = true;
             this._menus.add(menu);
             menu.connect('destroy', () => this._menus?.delete(menu));
             // This first time the menu is already built and open.
@@ -117,19 +117,19 @@ export default class StapleExtension extends Extension {
     }
 
     _addDockItem(menu) {
-        menu._stapleItem?.destroy();
-        menu._stapleItem = null;
-        if (!this._active || !this._settings.get_boolean('show-in-dock') || !launcherFile(menu._stapleApp))
+        menu._waysideItem?.destroy();
+        menu._waysideItem = null;
+        if (!this._active || !this._settings.get_boolean('show-in-dock') || !launcherFile(menu._waysideApp))
             return;
 
         const item = new PopupMenu.PopupMenuItem(LABEL);
-        item.connect('activate', () => this._create(menu._stapleApp));
+        item.connect('activate', () => this._create(menu._waysideApp));
         // Just above the separator that sits in front of Quit.
         const items = menu._getMenuItems();
         const quit = items.indexOf(menu._quitMenuItem);
         const position = quit > 0 && items[quit - 1] instanceof PopupMenu.PopupSeparatorMenuItem ? quit - 1 : items.length;
         menu.addMenuItem(item, position);
-        menu._stapleItem = item;
+        menu._waysideItem = item;
     }
 
     // ---- the action -----------------------------------------------------

@@ -10,7 +10,7 @@ function switchRow(settings, key, title, subtitle) {
     return row;
 }
 
-export default class StaplePreferences extends ExtensionPreferences {
+export default class WaysidePreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         applySedge(window, `${this.path}/sedge`);
         window.set_title('Wayside');

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wayside setup
+Comment=Turns Wayside on in place of Staple, its old name
+Exec=/usr/lib/wayside/wayside-take-over
+OnlyShowIn=GNOME;
+NoDisplay=true
+X-GNOME-Autostart-Phase=Applications

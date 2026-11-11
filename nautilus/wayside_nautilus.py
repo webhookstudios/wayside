@@ -1,4 +1,4 @@
-"""Staple for Files (Nautilus): adds "Create Desktop Shortcut" to the
+"""Wayside for Files (Nautilus): adds "Create Desktop Shortcut" to the
 right-click menu of folders and files.
 
 A folder or file gets a symbolic link on the desktop, which shows the item's
@@ -167,7 +167,7 @@ def on_desktop(path):
     return os.path.realpath(os.path.dirname(os.path.abspath(path))) == os.path.realpath(desktop_dir())
 
 
-class StapleExtension(GObject.GObject, Nautilus.MenuProvider):
+class WaysideExtension(GObject.GObject, Nautilus.MenuProvider):
     def _items(self, paths, label, kind):
         paths = [p for p in paths if p and not on_desktop(p)]
         if not paths:
@@ -178,7 +178,7 @@ class StapleExtension(GObject.GObject, Nautilus.MenuProvider):
         # a name shared by every menu would keep pointing at the first folder
         # that was clicked. A name unique to the target avoids that.
         key = hashlib.sha1('\0'.join(paths).encode('utf-8', 'surrogateescape')).hexdigest()[:12]
-        item = Nautilus.MenuItem(name=f'Staple::{kind}::{key}', label=label,
+        item = Nautilus.MenuItem(name=f'Wayside::{kind}::{key}', label=label,
                                  tip='Put a link on the desktop that you can move around')
         item.connect('activate', self._on_activate, paths)
         return [item]

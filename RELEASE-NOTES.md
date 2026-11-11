@@ -5,10 +5,12 @@ Wayside is the new name for Staple. It now has the Sedge look shared by every we
 - New icon, colors and fonts. Window titles and headings use the Sedge serif.
 - Messages from the Files menu and the dock now say Wayside.
 - The settings window is titled Wayside.
+- The package and command are now called `wayside` (it was `staple`). Installing it replaces the old package.
+- If Staple was turned on, Wayside turns on in its place the next time you log in.
 - Everything works exactly as before. Your settings and presets carry over.
 
 Install:
 
 ```bash
-sudo apt install ./staple_1.2.0_all.deb
+sudo apt install ./wayside_1.2.0_all.deb
 ```
