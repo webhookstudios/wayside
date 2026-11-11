@@ -10,6 +10,7 @@ Needs python3-nautilus. Installed to /usr/share/nautilus-python/extensions/.
 """
 import configparser
 import filecmp
+import hashlib
 import os
 import shutil
 import subprocess
@@ -167,24 +168,28 @@ def on_desktop(path):
 
 
 class StapleExtension(GObject.GObject, Nautilus.MenuProvider):
-    def _items(self, paths, label):
+    def _items(self, paths, label, kind):
         paths = [p for p in paths if p and not on_desktop(p)]
         if not paths:
             return []
         if len(paths) > 1:
             label = f'Create {len(paths)} Desktop Shortcuts'
-        item = Nautilus.MenuItem(name='Staple::CreateShortcut', label=label,
+        # Files turns the item name into a menu action and keeps it around, so
+        # a name shared by every menu would keep pointing at the first folder
+        # that was clicked. A name unique to the target avoids that.
+        key = hashlib.sha1('\0'.join(paths).encode('utf-8', 'surrogateescape')).hexdigest()[:12]
+        item = Nautilus.MenuItem(name=f'Staple::{kind}::{key}', label=label,
                                  tip='Put a link on the desktop that you can move around')
         item.connect('activate', self._on_activate, paths)
         return [item]
 
     def get_file_items(self, *args):
         files = args[-1]
-        return self._items([local_path(f) for f in files], 'Create Desktop Shortcut')
+        return self._items([local_path(f) for f in files], 'Create Desktop Shortcut', 'file')
 
     def get_background_items(self, *args):
         folder = args[-1]
-        return self._items([local_path(folder)], 'Create Desktop Shortcut to This Folder')
+        return self._items([local_path(folder)], 'Create Desktop Shortcut to This Folder', 'folder')
 
     def _on_activate(self, _item, paths):
         made, existing, errors = [], [], []

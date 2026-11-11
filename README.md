@@ -33,10 +33,10 @@ Staple has only been tested on Ubuntu 26.04 with GNOME Shell 50.1.
 
 ### With the deb package (recommended)
 
-Download `staple_1.1.0_all.deb` from the [latest release](https://github.com/webhookstudios/staple/releases/latest), then install it:
+Download `staple_1.1.1_all.deb` from the [latest release](https://github.com/webhookstudios/staple/releases/latest), then install it:
 
 ```bash
-sudo apt install ./staple_1.1.0_all.deb
+sudo apt install ./staple_1.1.1_all.deb
 ```
 
 Log out and back in, then open **Staple** from the apps menu to turn it on. To remove it:
