@@ -2,7 +2,7 @@
   "uuid": "wayside@webhookstudios.github.io",
   "name": "Wayside",
   "description": "Right-click an app, folder or file and choose Create Desktop Shortcut. The shortcut appears on your desktop and can be moved around.",
-  "version-name": "1.2.0",
+  "version-name": "1.2.1",
   "shell-version": ["50"],
   "settings-schema": "org.gnome.shell.extensions.wayside",
   "url": "https://github.com/webhookstudios/wayside"

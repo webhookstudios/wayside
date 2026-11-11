@@ -1,6 +1,6 @@
 # Wayside
 
-*Formerly Staple. Part of the Sedge family of webhookstudios apps.*
+*Part of the Sedge family of webhookstudios apps.*
 
 Right-click an app, folder or file and choose **Create Desktop Shortcut**. A shortcut appears on your desktop, and you can drag it wherever you like.
 
@@ -35,10 +35,10 @@ Wayside has only been tested on Ubuntu 26.04 with GNOME Shell 50.1.
 
 ### With the deb package (recommended)
 
-Download `wayside_1.2.0_all.deb` from the [latest release](https://github.com/webhookstudios/wayside/releases/latest), then install it:
+Download `wayside_1.2.1_all.deb` from the [latest release](https://github.com/webhookstudios/wayside/releases/latest), then install it:
 
 ```bash
-sudo apt install ./wayside_1.2.0_all.deb
+sudo apt install ./wayside_1.2.1_all.deb
 ```
 
 Log out and back in, then open **Wayside** from the apps menu to turn it on. To remove it:

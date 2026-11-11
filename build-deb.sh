@@ -44,7 +44,7 @@ install -m 644 "$ROOT/data/io.github.webhookstudios.Wayside.take-over.desktop" "
 
 cat > "$STAGE/usr/share/doc/wayside/copyright" <<EOF
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Wayside (formerly Staple)
+Upstream-Name: Wayside
 Source: https://github.com/webhookstudios/wayside
 
 Files: *
@@ -74,7 +74,7 @@ Section: gnome
 Priority: optional
 Homepage: https://github.com/webhookstudios/wayside
 Description: Right-click Create Desktop Shortcut for apps, folders and files
- Wayside (formerly Staple) adds Create Desktop Shortcut to the right-click menu of apps in the
+ Wayside adds Create Desktop Shortcut to the right-click menu of apps in the
  dock, the app grid and the Activities dash, and of folders and files in
  the Files app. The shortcut appears on your desktop and can be moved
  around like any other icon.
