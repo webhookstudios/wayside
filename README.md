@@ -35,10 +35,10 @@ Wayside has only been tested on Ubuntu 26.04 with GNOME Shell 50.1.
 
 ### With the deb package (recommended)
 
-Download `wayside_1.2.1_all.deb` from the [latest release](https://github.com/webhookstudios/wayside/releases/latest), then install it:
+Download `wayside_1.2.2_all.deb` from the [latest release](https://github.com/webhookstudios/wayside/releases/latest), then install it:
 
 ```bash
-sudo apt install ./wayside_1.2.1_all.deb
+sudo apt install ./wayside_1.2.2_all.deb
 ```
 
 Log out and back in, then open **Wayside** from the apps menu to turn it on. To remove it:
